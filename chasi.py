@@ -37,12 +37,8 @@
 проверка на то что кол-во минут равно 0:
  вывод ответа в правильном формате 
 '''
-print('введите часы и минуты:')
-vrem = list(map(str, input().split()))
-hours=vrem[0]
-minutes=vrem[1]
-dlin_vvod=len(vrem)
-def prov(hours, minutes):
+if __name__ == "__main__":
+    Main(def prov(hours, minutes):
     if (hours < 0 or hours > 23) and (minutes < 0 or minutes > 59):
         return print('Введены недопустимые данные: часы и минуты должны быть в пределах значений')
     elif hours < 0 or hours > 23:
@@ -76,24 +72,32 @@ def prov_chas(hours):
 
 
 def vrem_sut(hours):
-    if 0 <= hours <= 5:
+    if 0 <= hours < 6:
         return 'ночи'
-    if 6 <= hours <= 11:
+    if 6 <= hours < 12:
         return 'утра'
-    if 12 <= hours <= 17:
+    if 12 <= hours < 18:
         return 'дня'
-    if 18 <= hours <= 23:
+    if 18 <= hours < 18:
         return 'вечера'
-if dlin_vvod!=2:
-    print('Введены неверные данные: значения должны быть введины как XX XX')    
-elif hours[0]=='-' or minutes[0]=='-':
+print('введите часы и минуты:')
+vrem = list(map(str, input().split()))
+dlin_vvod=sum([len(i) for i in vrem])
+if dlin_vvod!=4:
+    print('Введены неверные данные: значения должны быть введины как XX XX')
+elif not (vrem[0].isdigit() and vrem[1].isdigit()):
     print('Введены неверные данные:все значения должны быть положительными')
-elif prov(int(hours),int(minutes)) == '1':
-    if str(hours) + str(minutes) == '00':
-        print('полночь')
-    elif str(hours) + str(minutes) == '120':
-        print('полдень')
-    elif prov_min(int(minutes)) != ' ровно':
-        print(str(int(hours)) + prov_chas(int(hours)) + str(int(minutes)) + prov_min(int(minutes)) + vrem_sut(int(hours)))
-    else:
-        print(str(int(hours)) + prov_chas(int(hours)) + vrem_sut(int(hours)) + prov_min(int(minutes)))
+else:
+    hours=vrem[0]
+    minutes=vrem[1]
+    hours_znach=int(hours)
+    minutes_znach=int(minutes)    
+    if prov(hours_znach,hours_znach) == '1':
+        if hours + minutes == '0000':
+            print('полночь')
+        elif hours + minutes == '1200':
+            print('полдень')
+        elif prov_min(minutes_znach)!= ' ровно':
+            print(hours + prov_chas(hours_znach) + minutes + prov_min(minutes_znach) + vrem_sut(hours_znach))
+        else:
+            print(hours + prov_chas(hours_znach) + vrem_sut(hours_znach) + prov_min(minutes_znach)))
