@@ -41,7 +41,7 @@ def prov(hours, minutes):
     elif minutes < 0 or minutes > 59:
         return print('Введены недопустимые данные: минуты должны быть от 0 до 59.')
     else:
-        return '1'
+        return True
 
 
 def prov_min(minutes):
@@ -88,10 +88,10 @@ def main():
         minutes=vrem[1]
         hours_znach=int(hours)
         minutes_znach=int(minutes)    
-        if prov(hours_znach,minutes_znach) == '1':
-            if hours + minutes == '0000':
+        if prov(hours_znach,minutes_znach) == True:
+            if hours_znach  == 0 and minutes_znach == 0:
                 print('полночь')
-            elif hours + minutes == '1200':
+            elif hours_znach  == 12 and minutes_znach == 0:
                 print('полдень')
             elif prov_min(minutes_znach)!= ' ровно':
                 print(hours + prov_chas(hours_znach) + minutes + prov_min(minutes_znach) + vrem_sut(hours_znach))
@@ -99,4 +99,5 @@ def main():
                 print(hours + prov_chas(hours_znach) + vrem_sut(hours_znach) + prov_min(minutes_znach))
 if __name__ == "__main__":
     main()
+
 
