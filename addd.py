@@ -1,3 +1,9 @@
+'''
+алгоритм
+
+
+'''
+
 import random
 def sort_sel(spisok):
     for ind in range(len(spisok)-1):
@@ -37,4 +43,5 @@ if vvod==1:
 
 
             
+
     
