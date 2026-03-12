@@ -1,21 +1,5 @@
 import random
 def sort_sel(spisok):
-    arr = spisok.copy()
-    n = len(arr)
-    comparisons = 0
-    swaps = 0
-    for i in range(n - 1):
-        min_index = i
-        for j in range(i + 1, n):
-            comparisons += 1
-            if arr[j] < arr[min_index]:
-                min_index = j
-        if min_index != i:
-            arr[i], arr[min_index] = arr[min_index], arr[i]
-            swaps += 1
-    return arr, comparisons, swaps
-import random
-def sort_sel(spisok):
     arr=spisok.copy()
     n=len(arr)
     comparisons=0
@@ -107,14 +91,15 @@ def interactive_mode():
         elif choice=="2":
             sorted_arr,comp,swp=sort_bub(arr)
             print('')
-            print(sorted_arr,'сравнения,перестановки:',comp,swp)
+            print('массив:',sorted_arr,'сравнения,перестановки:',comp,swp)
             print('')
         elif choice=="3":
             sorted_arr,comp,swp=sort_quick(arr)
             print('')
-            print(sorted_arr,'сравнения,перестановки:',comp,swp)
+            print('массив:',sorted_arr,'сравнения,перестановки:',comp,swp)
             print('')
         elif choice=="4":
+            arr0=arr.copy()
             arr=input('Введите массив:').split()
             arr1=[]
             x=0
@@ -127,7 +112,10 @@ def interactive_mode():
             if x==0:
                 arr=arr1.copy()
             else:
-                print("ТВО")
+                arr=arr0.copy()
+                print('')
+                print("неверный ввод")
+                print('')
         elif choice=="5":
             elem=input('Введите элемент:')
             ind=input('Введите индекс:')
@@ -138,17 +126,17 @@ def interactive_mode():
                     arr[ind]=elem
                 else:
                     print('')
-                    print('Дан')
+                    print('невверный ввод')
                     print('')
             else:
                 print('')
-                print('Дан')
+                print('неверный ввод')
                 print('')
         elif choice=="0":
             break
         else:
             print('')
-            print('Дан цифры')
+            print('неверный ввод')
             print('')
 def main():
     print("1-Демонстрационный режим")
@@ -162,6 +150,9 @@ def main():
         print("Неверный выбор!")
 if __name__=="__main__":
     main()
+
+
+
 
 
 
